@@ -65,3 +65,6 @@
 - name: Start the mongos service for Ubuntu variants
   service: name=mongos state=started
   when: ansible_os_family == "Debian"
+
+- name: wait for mongos to begin listening
+  wait_for: port="{{ mongos_port }}"
